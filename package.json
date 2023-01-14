@@ -1,10 +1,10 @@
 {
-  "name": "learn-backend-nodejs",
+  "name": "learn-backend",
   "version": "1.0.1",
   "description": "hanya kebutuhan belajar",
   "main": "index.js",
   "scripts": {
-    "go": "node index.js"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/daffatgi02/learn-nodejs-backend#readme",
   "dependencies": {
+    "axios": "^1.2.2",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
