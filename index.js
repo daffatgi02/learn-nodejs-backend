@@ -1,9 +1,18 @@
 const express = require('express');
+const cors = require('cors');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
+
+app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 //Config DB
 const connection = mysql.createConnection({
@@ -20,14 +29,6 @@ app.post('/users', (req, res) => {
   connection.query('INSERT INTO users (nama, umur, agama) VALUES (?, ?, ?)', [nama, umur, agama], (error, results) => {
     if (error) throw error;
     res.status(201).send(`User added with ID: ${results.insertId}`);
-  });
-});
-
-// Membaca data
-app.get('/users', (req, res) => {
-  connection.query('SELECT * FROM users', (error, results) => {
-    if (error) throw error;
-    res.send(results);
   });
 });
 
