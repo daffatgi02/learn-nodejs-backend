@@ -31,6 +31,15 @@ app.get('/users', (req, res) => {
   });
 });
 
+// Membaca data dengan patokan ID
+app.get('/users/:id', (req, res) => {
+  const id = req.params.id;
+  connection.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
+    if (error) throw error;
+    res.send(results);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`);
 });
