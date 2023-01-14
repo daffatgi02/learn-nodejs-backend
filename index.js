@@ -40,6 +40,25 @@ app.get('/users/:id', (req, res) => {
   });
 });
 
+// Mengupdate Data
+app.put('/users/:id', (req, res) => {
+  const id = req.params.id;
+  const { nama, umur, agama } = req.body;
+  connection.query('UPDATE users SET nama = ?, umur = ?, agama = ? WHERE id = ?', [nama, umur, agama, id], (error, results) => {
+    if (error) throw error;
+    res.send(`User modified with ID: ${id}`);
+  });
+});
+
+// Mendelete Data
+app.delete('/users/:id', (req, res) => {
+  const id = req.params.id;
+  connection.query('DELETE FROM users WHERE id = ?', [id], (error, results) => {
+    if (error) throw error;
+    res.send(`User deleted with ID: ${id}`);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`);
 });
