@@ -1,11 +1,13 @@
 const express = require('express');
 const mysql = require('mysql');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
-  host: 'hostname',
-  user: 'username',
-  password: 'password',
-  database: 'database_name'
+  host: '66.118.234.39',
+  user: 'u40_1fcVHWTpwn',
+  password: '+qzCOyK9=bU6SoJOHzhvlQM!',
+  database: 's40_daffa_db'
 });
 
 connection.connect();
@@ -21,5 +23,5 @@ app.get('/users', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port http://localhost:${port}`);
 });
