@@ -32,14 +32,14 @@ app.post('/users', (req, res) => {
   });
 });
 
-// Membaca data dengan patokan ID
-app.get('/users/:id', (req, res) => {
-  const id = req.params.id;
-  connection.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
+// Membaca semua data yang berada di DB
+app.get('/users', (req, res) => {
+  connection.query('SELECT * FROM users', (error, results) => {
     if (error) throw error;
     res.send(results);
   });
 });
+
 
 // Mengupdate Data
 app.put('/users/:id', (req, res) => {
