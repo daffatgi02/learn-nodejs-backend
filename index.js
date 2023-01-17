@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
+const connection = require('./config');
 
 app.use(cors());
 app.use(express.json());
@@ -13,15 +13,6 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
 });
-
-//Config DB
-const connection = mysql.createConnection({
-  host: '66.118.234.39',
-  user: 'u40_1fcVHWTpwn',
-  password: '+qzCOyK9=bU6SoJOHzhvlQM!',
-  database: 's40_daffa_db'
-});
-connection.connect();
 
 // Membuat data
 app.post('/users', (req, res) => {
